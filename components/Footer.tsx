@@ -2,12 +2,12 @@ import Link from "next/link";
 
 const footerLinks = {
   Services: [
-    { label: "Acne Treatment", href: "/services/acne-treatment" },
-    { label: "Hair Loss", href: "/services/hair-loss-treatment" },
-    { label: "Laser Resurfacing", href: "/services/laser-skin-resurfacing" },
-    { label: "Pigmentation", href: "/services/pigmentation-treatment" },
-    { label: "Anti-Ageing", href: "/services/anti-ageing" },
-    { label: "Medical Dermatology", href: "/services/skin-conditions" },
+    { label: "Chemical Peels", href: "/services/chemical-peels" },
+    { label: "Freckle Removal", href: "/services/freckle-removal" },
+    { label: "Wart Treatment", href: "/services/wart-treatment" },
+    { label: "Hair Loss Treatment", href: "/services/hair-loss-treatment" },
+    { label: "PRP / GFC", href: "/services/prp-gfc" },
+    { label: "Microneedling", href: "/services/microneedling" },
   ],
   Learn: [
     { label: "Blog", href: "/blog" },
