@@ -7,61 +7,61 @@ export default function Hero() {
       className="relative min-h-screen flex items-center bg-ivory overflow-hidden"
       aria-label="Hero"
     >
-      {/* Decorative background shapes */}
+      {/* Background shapes */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-slate-mist opacity-30" />
-        <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full bg-champagne opacity-60" />
+        <div className="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-slate-mist opacity-25" />
+        <div className="absolute -bottom-16 -left-16 w-[320px] h-[320px] rounded-full bg-champagne opacity-70" />
       </div>
 
-      <div className="relative max-w-content mx-auto px-6 lg:px-8 w-full pt-28 pb-20 lg:pt-36 lg:pb-28">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative max-w-content mx-auto px-6 lg:px-8 w-full pt-24 pb-16 lg:pt-32 lg:pb-24">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
 
           {/* Left — copy */}
-          <div>
-            <p className="font-sans text-xs font-medium tracking-[0.2em] uppercase text-slate-mid mb-6">
+          <div className="max-w-xl">
+            <p className="font-sans text-xs font-medium tracking-[0.25em] uppercase text-slate-mid mb-5">
               Dermatologist in Bangalore
             </p>
 
-            <h1 className="font-serif text-display-xl text-ink mb-6 leading-[1.08]">
+            <h1 className="font-serif text-display-xl text-ink mb-5 leading-[1.06]">
               Pranava Skin,{" "}
-              <span className="italic text-slate-deep">Hair &amp; Aesthetics</span>{" "}
+              <em className="not-italic text-slate-deep">Hair &amp; Aesthetics</em>{" "}
               Clinic
             </h1>
 
-            <p className="font-sans text-lg lg:text-xl text-muted leading-relaxed mb-10 max-w-lg">
+            <p className="font-sans text-base lg:text-lg text-muted leading-relaxed mb-8 max-w-md">
               Medical-grade dermatology and aesthetic care in Bangalore — where
               clinical precision meets a considered aesthetic.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center px-7 py-3.5 bg-slate-deep text-ivory font-sans text-sm font-medium tracking-wide hover:bg-slate-mid transition-colors duration-200"
+                className="inline-flex items-center justify-center px-7 py-3 bg-slate-deep text-ivory font-sans text-sm font-medium tracking-wide hover:bg-slate-mid transition-colors duration-200"
               >
                 Book a Consultation
               </Link>
               <Link
                 href="/#services"
-                className="inline-flex items-center justify-center px-7 py-3.5 border border-border text-ink font-sans text-sm font-medium hover:border-slate-deep hover:text-slate-deep transition-colors duration-200"
+                className="inline-flex items-center justify-center px-7 py-3 border border-border text-ink font-sans text-sm font-medium hover:border-slate-deep hover:text-slate-deep transition-colors duration-200"
               >
-                View Services
+                Our Services
               </Link>
             </div>
 
             {/* Trust signals */}
-            <div className="mt-12 pt-12 border-t border-border flex flex-wrap gap-8">
+            <div className="mt-10 pt-8 border-t border-border grid grid-cols-3 gap-4">
               {[
                 { label: "Board Certified", sublabel: "MD Dermatology" },
                 { label: "Medical-Grade", sublabel: "Treatments only" },
                 { label: "Personalised", sublabel: "Every consultation" },
               ].map((item) => (
-                <div key={item.label} className="flex flex-col">
-                  <span className="font-serif text-sm font-semibold text-ink">
+                <div key={item.label}>
+                  <p className="font-serif text-sm font-semibold text-ink leading-tight">
                     {item.label}
-                  </span>
-                  <span className="font-sans text-xs text-muted mt-0.5">
+                  </p>
+                  <p className="font-sans text-xs text-muted mt-1">
                     {item.sublabel}
-                  </span>
+                  </p>
                 </div>
               ))}
             </div>
@@ -69,24 +69,22 @@ export default function Hero() {
 
           {/* Right — procedure image */}
           <div className="hidden lg:block relative">
-            {/* Offset frame */}
             <div
               aria-hidden="true"
-              className="absolute -top-4 -right-4 w-full h-full border border-slate-mist"
+              className="absolute -top-3 -right-3 w-full h-full border border-slate-mist/60"
             />
             <div className="relative overflow-hidden aspect-[4/5]">
               <Image
-                src="/images/procedures.jpg"
-                alt="Aesthetic skin treatment procedure at Pranava Clinic, Bangalore"
+                src="/images/procedure.jpg"
+                alt="PRP scalp injection treatment at Pranava Skin, Hair and Aesthetics Clinic, Bangalore"
                 fill
-                sizes="(max-width: 1280px) 45vw, 560px"
+                sizes="45vw"
                 className="object-cover object-center"
                 priority
               />
-              {/* Subtle dark overlay at bottom for caption */}
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ink/40 to-transparent" />
-              <p className="absolute bottom-5 left-5 font-sans text-xs text-ivory/80 tracking-wide">
-                Hydrafacial · Laser · PRP — Pranava Clinic, Bangalore
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent" />
+              <p className="absolute bottom-4 left-5 font-sans text-xs text-ivory/80 tracking-wide">
+                Pranava Clinic, Bangalore
               </p>
             </div>
           </div>

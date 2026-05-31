@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function About() {
   return (
     <section id="about" className="py-section bg-ivory">
@@ -9,7 +7,7 @@ export default function About() {
           About the Clinic
         </p>
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — philosophy */}
           <div>
             <h2 className="font-serif text-display-md text-ink mb-6">
@@ -58,24 +56,10 @@ export default function About() {
               ))}
             </div>
 
-            {/* Procedure image */}
-            <div className="mt-10 relative overflow-hidden aspect-[3/2]">
-              <Image
-                src="/images/procedure.jpg"
-                alt="PRP scalp injection procedure at Pranava Skin, Hair and Aesthetics Clinic, Bangalore"
-                fill
-                sizes="(max-width: 1024px) 90vw, 45vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-ink/30 to-transparent" />
-              <p className="absolute bottom-3 left-4 font-sans text-[11px] text-ivory/80 tracking-wide">
-                PRP / GFC scalp treatment
-              </p>
-            </div>
           </div>
 
           {/* Right — doctor credentials */}
-          <div className="lg:pt-12">
+          <div className="lg:pt-8">
             <div className="relative">
               {/* Decorative frame */}
               <div
@@ -96,7 +80,7 @@ export default function About() {
                   </div>
                 </div>
 
-                <div className="space-y-5">
+                <dl className="space-y-4">
                   <CredentialRow
                     label="Qualification"
                     value="MD Dermatology, Venereology &amp; Leprosy"
@@ -107,7 +91,7 @@ export default function About() {
                   />
                   <CredentialRow
                     label="Affiliations"
-                    value="Indian Association of Dermatologists (IADVL), [Add associations]"
+                    value="Indian Association of Dermatologists (IADVL)"
                   />
                   <CredentialRow
                     label="Specialisations"
@@ -117,7 +101,7 @@ export default function About() {
                     label="Experience"
                     value="[X]+ years in clinical dermatology"
                   />
-                </div>
+                </dl>
 
                 <blockquote className="mt-8 pt-8 border-t border-border">
                   <p className="font-serif text-base italic text-ink leading-relaxed">

@@ -48,7 +48,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-section bg-champagne">
       <div className="max-w-content mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — info */}
           <div>
             <p className="font-sans text-xs font-medium tracking-[0.2em] uppercase text-slate-mid mb-4">
@@ -109,7 +109,7 @@ export default function Contact() {
 
           {/* Right — form */}
           <div>
-            <div className="bg-ivory p-8 lg:p-10 shadow-card">
+            <div className="bg-ivory p-8 lg:p-10 border border-border">
               {formState === "success" ? (
                 <div className="flex flex-col items-center text-center py-8">
                   <div className="w-12 h-12 rounded-full bg-slate-mist flex items-center justify-center mb-4">
@@ -136,7 +136,7 @@ export default function Contact() {
                   noValidate
                   aria-label="Book a consultation"
                 >
-                  <h3 className="font-serif text-xl text-ink mb-8">
+                  <h3 className="font-serif text-xl text-ink mb-6">
                     Request an Appointment
                   </h3>
 
@@ -150,7 +150,7 @@ export default function Contact() {
                     className="absolute opacity-0 pointer-events-none w-0 h-0"
                   />
 
-                  <div className="space-y-5">
+                  <div className="space-y-4">
                     <FormField
                       label="Full Name"
                       name="name"
