@@ -2,44 +2,30 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "I had been dealing with melasma for three years before consulting Dr. Nagalakshmi K P at Pranava. The difference was that she actually explained what was causing it and why previous treatments had failed. Six months later, the improvement is significant — and I understand how to maintain it.",
-    name: "Priya R.",
-    detail: "Melasma treatment, Bangalore",
+      "Dr Nagalakshmi listened to all our problems and diagnosed the things perfectly which never worked for us previously even after going to multiple places. She writes the perfect medicine which suits our skin. She even warns and asks us to monitor if the medicine can alter anything in our body. Please feel free to visit her clinic for any kind of skin problems.",
+    name: "Patient",
+    detail: "Skin consultation, Bangalore",
   },
   {
     id: 2,
     quote:
-      "My acne scars were causing me real distress. The treatment plan was honest about timelines — no promises of overnight results. The results came, gradually and steadily. I trust this clinic because they don't oversell.",
-    name: "Arjun M.",
-    detail: "Acne scar treatment, Bangalore",
+      "Dr. Nagalakshmi is very knowledgeable and takes the time to truly listen. She was patient throughout the visit, answered all of my questions, and explained my condition in a clear and detailed way. I came to this doctor after seeing several others without any improvement. Doctor carefully explained each medication, including its purpose and what to expect. Since starting the treatment plan, I have noticed real improvement in my condition. I am very grateful to Dr. Nagalakshmi and would highly recommend her to anyone looking for thoughtful, thorough, and effective care.",
+    name: "Patient",
+    detail: "Dermatology consultation, Bangalore",
   },
   {
     id: 3,
     quote:
-      "I've been to several skin clinics in Bangalore. What sets Pranava apart is the depth of the consultation. Every visit, I leave with a clearer understanding of my own skin. That knowledge itself has been valuable.",
-    name: "Nandita S.",
-    detail: "Hair loss & skin consultation",
+      "Excellent experience. I struggled with warts on my leg for a long time. I tried so many different ways to remove them, but they kept growing back. I finally decided to visit this clinic, and I'm so glad I did. The treatment here actually worked! The progress is incredible, and I'm almost healed. If you are looking for a solution that lasts, please do visit here.",
+    name: "Patient",
+    detail: "Wart treatment, Bangalore",
   },
   {
     id: 4,
     quote:
-      "The GFC treatment for hair loss gave me results I wasn't expecting to see so clearly. More importantly, Dr. Nagalakshmi K P explained exactly what to realistically expect and what would take longer. No false hope — just honest medicine.",
-    name: "Vikram K.",
-    detail: "GFC hair treatment, Bangalore",
-  },
-  {
-    id: 5,
-    quote:
-      "I was nervous about starting any aesthetic treatments, having heard about overdone results elsewhere. Pranava's approach is measured and conservative. The results look like me — just a rested, fresher version.",
-    name: "Ananya P.",
-    detail: "Anti-ageing treatment, Bangalore",
-  },
-  {
-    id: 6,
-    quote:
-      "The laser treatment for pigmentation was explained thoroughly before we started — which laser, why that one, what settings, what to expect. I felt informed, not just processed. The results justify the trust.",
-    name: "Karthik B.",
-    detail: "Pigmentation treatment, Bangalore",
+      "I was suffering from a fungal infection on my finger for several months. I was embarrassed to show my finger to others in the office. Finally, on the advice of a friend, I came to Pranava Clinic. Dr. Nagalakshmi listened to my problem very patiently and prescribed medicine, which also gave me courage. After taking the medicine, my finger is returning to its previous condition. Now I can shake hands with others with confidence. Thank you Dr. Nagalakshmi.",
+    name: "Patient",
+    detail: "Fungal infection treatment, Bangalore",
   },
 ];
 
@@ -58,12 +44,12 @@ export default function Testimonials() {
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
             <blockquote
               key={t.id}
               className={`p-7 flex flex-col ${
-                i % 3 === 1 ? "bg-champagne" : "bg-warm-white border border-border"
+                i % 2 === 1 ? "bg-champagne" : "bg-warm-white border border-border"
               }`}
             >
               {/* Quote mark */}
@@ -79,9 +65,6 @@ export default function Testimonials() {
               </p>
 
               <footer className="mt-6 pt-5 border-t border-border">
-                <p className="font-serif text-sm font-semibold text-ink">
-                  {t.name}
-                </p>
                 <p className="font-sans text-xs text-muted mt-0.5">{t.detail}</p>
               </footer>
             </blockquote>
