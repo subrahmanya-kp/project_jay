@@ -108,7 +108,7 @@ export default function Contact() {
           </div>
 
           {/* Right — form */}
-          <div>
+          <div> 
             <div className="bg-ivory p-8 lg:p-10 border border-border">
               {formState === "success" ? (
                 <div className="flex flex-col items-center text-center py-8">
