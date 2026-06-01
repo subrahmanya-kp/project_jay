@@ -1,73 +1,180 @@
+"use client";
+
 import Image from "next/image";
+import { useRef, useState, useCallback } from "react";
 
 const results = [
   {
     src: "/treatments/face.jpeg",
     label: "Acne & Skin Inflammation",
     detail: "Facial skin treatment",
+    imgClass: "object-cover object-center",
   },
   {
+    // 16:9 landscape — use object-contain so the full image shows
     src: "/treatments/hair_2.jpeg",
     label: "Hair Loss",
     detail: "Hair regrowth treatment",
+    imgClass: "object-contain",
   },
   {
     src: "/treatments/arms.jpeg",
     label: "Skin Infection",
     detail: "Dermatitis / infection treatment",
+    imgClass: "object-cover object-center",
   },
   {
-    src: "/treatments/leg.jpeg",
+    // 2.3:1 wide landscape — use object-contain so the full image shows
+    src: "/treatments/legs.jpeg",
     label: "Psoriasis / Fungal Infection",
     detail: "Leg skin condition treatment",
+    imgClass: "object-contain",
   },
 ];
 
 export default function Results() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  // Width of one slide + its trailing gap — the scroll step size.
+  const slideStep = () => {
+    const track = trackRef.current;
+    if (!track) return 0;
+    const first = track.firstElementChild as HTMLElement | null;
+    if (!first) return 0;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    return first.offsetWidth + gap;
+  };
+
+  const scroll = (dir: -1 | 1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollBy({ left: dir * slideStep(), behavior: "smooth" });
+  };
+
+  const scrollToIdx = (idx: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollTo({ left: idx * slideStep(), behavior: "smooth" });
+  };
+
+  const onScroll = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const first = track.firstElementChild as HTMLElement | null;
+    if (!first) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const step = first.offsetWidth + gap;
+    if (step === 0) return;
+    setActiveIdx(Math.round(track.scrollLeft / step));
+  }, []);
+
   return (
     <section id="results" className="py-section bg-champagne">
       <div className="max-w-content mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-xl mb-12">
-          <p className="font-sans text-xs font-medium tracking-[0.2em] uppercase text-slate-mid mb-4">
+          <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
+          <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
             Treatment Outcomes
           </p>
-          <h2 className="font-serif text-display-md text-ink mb-3">
+          <h2 className="font-serif text-display-md text-ink mb-4 leading-tight">
             Real Patient Results
           </h2>
-          <p className="font-sans text-sm text-muted leading-relaxed">
+          <p className="font-sans text-base text-muted leading-relaxed">
             Before and after outcomes from patients treated at Pranava Skin,
             Hair &amp; Aesthetics Clinic, Bangalore.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {results.map((item) => (
-            <figure
-              key={item.src}
-              className="bg-ivory border border-border overflow-hidden flex flex-col"
+        {/* Carousel — px-10 reserves space so arrows don't overlap the track */}
+        <div className="relative px-10">
+          <div
+            ref={trackRef}
+            onScroll={onScroll}
+            className="carousel-track flex gap-4 overflow-x-auto snap-x snap-mandatory"
+          >
+            {results.map((item) => (
+              <figure
+                key={item.src}
+                /* Full width on mobile; half-width (minus half the gap) on sm+ */
+                className="snap-start shrink-0 w-full sm:w-[calc(50%-8px)] bg-ivory border border-border overflow-hidden"
+              >
+                {/* Fixed aspect ratio so every card is identical height */}
+                <div className="relative aspect-[3/2] bg-white">
+                  <Image
+                    src={item.src}
+                    alt={`${item.label} before and after at Pranava Skin Clinic, Bangalore`}
+                    fill
+                    className={item.imgClass}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
+                    loading="eager"
+                  />
+                </div>
+                <figcaption className="px-4 py-3 border-t border-border">
+                  <p className="font-serif text-sm font-semibold text-ink">
+                    {item.label}
+                  </p>
+                  <p className="font-sans text-xs text-muted mt-0.5">
+                    {item.detail}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          {/* Arrows — sit in the 40 px lanes on either side of the track */}
+          <button
+            onClick={() => scroll(-1)}
+            aria-label="Previous result"
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-ivory border border-border w-9 h-9 flex items-center justify-center hover:bg-white transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <div className="bg-white">
-                <Image
-                  src={item.src}
-                  alt={`${item.label} before and after at Pranava Skin Clinic, Bangalore`}
-                  width={700}
-                  height={900}
-                  className="w-full h-auto block"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  loading="eager"
-                />
-              </div>
-              <figcaption className="px-4 py-3 border-t border-border mt-auto">
-                <p className="font-serif text-sm font-semibold text-ink">
-                  {item.label}
-                </p>
-                <p className="font-sans text-xs text-muted mt-0.5">
-                  {item.detail}
-                </p>
-              </figcaption>
-            </figure>
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            onClick={() => scroll(1)}
+            aria-label="Next result"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-ivory border border-border w-9 h-9 flex items-center justify-center hover:bg-white transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-2 mt-5">
+          {results.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToIdx(i)}
+              aria-label={`View result ${i + 1}`}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                i === activeIdx ? "bg-slate-mid" : "bg-border"
+              }`}
+            />
           ))}
         </div>
 

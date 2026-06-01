@@ -51,10 +51,11 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — info */}
           <div>
-            <p className="font-sans text-xs font-medium tracking-[0.2em] uppercase text-slate-mid mb-4">
+            <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
+            <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
               Get in Touch
             </p>
-            <h2 className="font-serif text-display-md text-ink mb-6">
+            <h2 className="font-serif text-display-md text-ink mb-5 leading-tight">
               Book a Consultation
             </h2>
             <p className="font-sans text-base text-muted leading-relaxed mb-10">

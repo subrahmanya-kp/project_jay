@@ -32,10 +32,11 @@ export default function Testimonials() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
           <div>
-            <p className="font-sans text-xs font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
+            <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
+            <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
               Patient Voices
             </p>
-            <h2 className="font-serif text-display-md text-ink">
+            <h2 className="font-serif text-display-md text-ink leading-tight">
               What Our Patients Say
             </h2>
           </div>
@@ -63,12 +64,12 @@ export default function Testimonials() {
               {/* Decorative quote bar */}
               <div className="w-8 h-0.5 bg-slate-deep mb-5" aria-hidden="true" />
 
-              <p className="font-sans text-sm text-muted leading-[1.8] flex-1">
+              <p className="font-sans text-base text-muted leading-[1.8] flex-1">
                 {t.quote}
               </p>
 
               <footer className="mt-6 pt-5 border-t border-border">
-                <p className="font-sans text-xs text-muted">{t.detail}</p>
+                <p className="font-sans text-sm text-muted">{t.detail}</p>
               </footer>
             </blockquote>
           ))}

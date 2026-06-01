@@ -46,3 +46,17 @@ body {
   outline: 2px solid #3D4F6B;
   outline-offset: 3px;
 }
+
+/* Anchor scroll offset so fixed nav doesn't cover section targets */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Hide scrollbar on carousel track across all browsers */
+.carousel-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}

@@ -34,10 +34,10 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled || !isHome
-          ? "bg-ivory/95 backdrop-blur-sm shadow-nav"
-          : "bg-transparent"
+          ? "bg-ivory/97 backdrop-blur-md border-b border-border"
+          : "bg-ivory/70 backdrop-blur-sm"
       }`}
     >
       <nav className="max-w-content mx-auto px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between">

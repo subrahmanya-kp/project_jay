@@ -18,19 +18,20 @@ export default function Hero() {
 
           {/* Left — copy */}
           <div className="max-w-xl">
-            <p className="font-sans text-xs font-medium tracking-[0.25em] uppercase text-slate-mid mb-5">
-              Dermatologist in Bangalore
+            <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
+            <p className="font-sans text-[11px] font-medium tracking-[0.25em] uppercase text-slate-mid mb-4">
+              Dermatology and Aesthetic care in Bangalore
             </p>
 
-            <h1 className="font-serif text-display-xl text-ink mb-5 leading-[1.06]">
+            <h1 className="font-serif text-display-xl text-ink mb-6 leading-[1.06]">
               Pranava Skin,{" "}
               <em className="not-italic text-slate-deep">Hair &amp; Aesthetics</em>{" "}
               Clinic
             </h1>
 
-            <p className="font-sans text-base lg:text-lg text-muted leading-relaxed mb-8 max-w-md">
+            <p className="font-sans text-lg text-muted leading-relaxed mb-8 max-w-md">
               Medical-grade dermatology and aesthetic care in Bangalore — where
-              clinical precision meets a considered aesthetic.
+              clinical precision meets aesthetic.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -56,6 +57,7 @@ export default function Hero() {
                 { label: "Personalised", sublabel: "Every consultation" },
               ].map((item) => (
                 <div key={item.label}>
+                  <div className="w-4 h-px bg-gold mb-2.5" aria-hidden="true" />
                   <p className="font-serif text-sm font-semibold text-ink leading-tight">
                     {item.label}
                   </p>

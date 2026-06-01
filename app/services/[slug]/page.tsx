@@ -87,58 +87,11 @@ export default async function ServicePage({ params }: Props) {
                 ))}
               </div>
 
-              {/* Treatments list */}
-              <div className="mt-12">
-                <h2 className="font-serif text-display-md text-ink mb-6">
-                  What&rsquo;s Included
-                </h2>
-                <ul className="space-y-3">
-                  {service.treatments.map((treatment) => (
-                    <li
-                      key={treatment}
-                      className="flex items-start gap-3 font-sans text-sm text-muted"
-                    >
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-deep flex-shrink-0" />
-                      {treatment}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Why Pranava */}
-              <div className="mt-12 p-7 lg:p-8 bg-champagne border-l-2 border-slate-deep">
-                <h2 className="font-serif text-lg font-semibold text-ink mb-3">
-                  The Pranava Approach
-                </h2>
-                <p className="font-sans text-sm text-muted leading-relaxed">
-                  Every treatment at Pranava begins with an accurate diagnosis.
-                  We tailor protocols to your Fitzpatrick skin type — a
-                  non-negotiable for safe, effective outcomes on Indian skin
-                  tones. You leave each appointment understanding what was done
-                  and why.
-                </p>
-              </div>
             </div>
 
             {/* Sidebar */}
             <aside>
               <div className="sticky top-24 space-y-6">
-                <div className="bg-ivory border border-border p-6">
-                  <h3 className="font-serif text-lg text-ink mb-4">
-                    Ready to consult?
-                  </h3>
-                  <p className="font-sans text-sm text-muted leading-relaxed mb-6">
-                    Book a consultation and we will assess whether this
-                    treatment is right for your skin.
-                  </p>
-                  <Link
-                    href="/#contact"
-                    className="block w-full text-center py-3 bg-slate-deep text-ivory font-sans text-sm font-medium hover:bg-slate-mid transition-colors"
-                  >
-                    Book Now
-                  </Link>
-                </div>
-
                 {/* Other services */}
                 <div>
                   <p className="font-sans text-[10px] font-medium tracking-[0.2em] uppercase text-muted mb-3">

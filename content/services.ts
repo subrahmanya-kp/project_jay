@@ -16,7 +16,7 @@ export const services: Service[] = [
     shortDescription:
       "Medical-grade peels for acne, pigmentation, dullness, and uneven texture — calibrated to your skin type.",
     fullDescription:
-      "Chemical peels use controlled application of acids to exfoliate damaged skin layers, stimulate collagen, and reveal healthier skin beneath. At Pranava, every peel protocol is selected based on your specific concern and Fitzpatrick skin type — a critical consideration for South Asian skin, where the wrong peel strength can trigger post-inflammatory hyperpigmentation. We offer superficial, medium, and combination peels and layer them with other treatments when indicated.",
+      "Chemical peels exfoliate damaged skin layers, stimulate collagen, and reveal healthier skin beneath. At Pranava, every peel protocol is selected based on your specific concern and Fitzpatrick skin type — a critical consideration for South Asian skin, where the wrong peel strength can trigger post-inflammatory hyperpigmentation. We offer superficial, medium, and combination peels and layer them with other treatments when indicated.",
     keyword: "chemical peel treatment in Bangalore",
     metaDescription:
       "Medical-grade chemical peels in Bangalore. Glycolic, salicylic, TCA and combination peels for acne, pigmentation and texture. Pranava Skin Clinic.",

@@ -8,13 +8,14 @@ export default function Services() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-6">
           <div className="max-w-lg">
-            <p className="font-sans text-xs font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
+            <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
+            <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
               What We Treat
             </p>
-            <h2 className="font-serif text-display-md text-ink mb-3">
+            <h2 className="font-serif text-display-md text-ink mb-4 leading-tight">
               Our Services
             </h2>
-            <p className="font-sans text-sm text-muted leading-relaxed">
+            <p className="font-sans text-base text-muted leading-relaxed">
               Every treatment begins with a thorough consultation. We match
               the intervention to the diagnosis — not the other way around.
             </p>
@@ -44,7 +45,7 @@ export default function Services() {
               </span>
 
               {/* Title */}
-              <h3 className="font-serif text-base font-semibold text-ink mb-2 group-hover:text-slate-deep transition-colors leading-snug">
+              <h3 className="font-serif text-[17px] font-semibold text-ink mb-2.5 group-hover:text-slate-deep transition-colors leading-snug">
                 {service.title}
               </h3>
 

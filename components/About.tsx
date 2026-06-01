@@ -3,26 +3,21 @@ export default function About() {
     <section id="about" className="py-section bg-ivory">
       <div className="max-w-content mx-auto px-6 lg:px-8">
         {/* Section label */}
-        <p className="font-sans text-xs font-medium tracking-[0.2em] uppercase text-slate-mid mb-4">
+        <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
+        <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-10">
           About the Clinic
         </p>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — philosophy */}
           <div>
-            <h2 className="font-serif text-display-md text-ink mb-6">
+            <h2 className="font-serif text-display-md text-ink mb-6 leading-tight">
               Medicine first.{" "}
               <span className="italic text-slate-deep">Aesthetics always.</span>
             </h2>
-            <div className="space-y-4 font-sans text-base text-muted leading-relaxed">
+            <div className="space-y-5 font-sans text-base text-muted leading-[1.8]">
               <p>
-                Pranava was founded on a single conviction: that dermatological
-                care in India deserves the same rigour and restraint you would
-                find in the world's leading skin clinics — without the
-                inaccessibility or the artificiality.
-              </p>
-              <p>
-                Every consultation begins with a diagnosis. We don't prescribe
+                At Pranava every consultation begins with a diagnosis. We don't prescribe
                 treatments we haven't justified. We don't offer procedures that
                 aren't appropriate for your skin type. And we spend as much time
                 explaining your condition as we do treating it.
@@ -35,7 +30,7 @@ export default function About() {
             </div>
 
             {/* Philosophy pillars */}
-            <div className="mt-10 grid grid-cols-2 gap-4">
+            <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5">
               {[
                 { title: "Diagnosis-First", body: "No treatment without understanding" },
                 { title: "Skin-Type Specific", body: "Safe protocols for Indian skin" },
@@ -44,7 +39,7 @@ export default function About() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="p-4 border border-border bg-warm-white"
+                  className="pl-4 py-1 border-l-2 border-gold"
                 >
                   <p className="font-serif text-sm font-semibold text-ink mb-1">
                     {item.title}
@@ -75,7 +70,7 @@ export default function About() {
                       Dr. Nagalakshmi K P
                     </p>
                     <p className="font-sans text-xs text-muted mt-0.5">
-                      Lead Dermatologist &amp; Founder
+                      Dermatologist &amp; Founder
                     </p>
                   </div>
                 </div>
@@ -86,32 +81,18 @@ export default function About() {
                     value="MD Dermatology, Venereology &amp; Leprosy"
                   />
                   <CredentialRow
-                    label="Board Certification"
-                    value="[Board Name], [Year]"
-                  />
-                  <CredentialRow
                     label="Affiliations"
                     value="Indian Association of Dermatologists (IADVL)"
                   />
                   <CredentialRow
                     label="Specialisations"
-                    value="Medical Dermatology · Trichology · Aesthetic Medicine"
+                    value="Dermatology · Trichology · Aesthetic Medicine"
                   />
                   <CredentialRow
                     label="Experience"
-                    value="[X]+ years in clinical dermatology"
+                    value="7+ years in dermatology"
                   />
                 </dl>
-
-                <blockquote className="mt-8 pt-8 border-t border-border">
-                  <p className="font-serif text-base italic text-ink leading-relaxed">
-                    &ldquo;The most important thing I do is listen. The skin
-                    tells a story — my role is to read it correctly.&rdquo;
-                  </p>
-                  <footer className="mt-3 font-sans text-xs text-muted">
-                    — Dr. Nagalakshmi K P
-                  </footer>
-                </blockquote>
               </div>
             </div>
           </div>
