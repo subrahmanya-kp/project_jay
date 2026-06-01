@@ -41,10 +41,10 @@ export default function Footer() {
 
             {/* NAP */}
             <address className="not-italic font-sans text-sm text-ivory/60 leading-relaxed space-y-1">
-              <p>[Street Address], Bangalore</p>
-              <p>Karnataka — 5600XX, India</p>
-              <a href="tel:+91XXXXXXXXXX" className="block hover:text-ivory transition-colors">
-                +91 XXXX XXXXXX
+              <p>2172, 13A Main Rd, Kumaraswamy Layout</p>
+              <p>Bangalore, Karnataka — 560078, India</p>
+              <a href="tel:+919483127354" className="block hover:text-ivory transition-colors">
+                +91 9483127354
               </a>
               <a href="mailto:info@pranavaskin.com" className="block hover:text-ivory transition-colors">
                 info@pranavaskin.com

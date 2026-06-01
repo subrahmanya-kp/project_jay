@@ -67,15 +67,16 @@ export default function Contact() {
             {/* Clinic details */}
             <dl className="space-y-6">
               <ContactDetail label="Address">
-                [Street Address],<br />
-                Bangalore, Karnataka — 5600XX
+                2172, 13A Main Rd,<br />
+                Near Balmuri Ganesha Temple,<br />
+                Kumaraswamy Layout, Bangalore — 560078
               </ContactDetail>
               <ContactDetail label="Phone">
                 <a
-                  href="tel:+91XXXXXXXXXX"
+                  href="tel:+919483127354"
                   className="hover:text-slate-deep transition-colors"
                 >
-                  +91 XXXX XXXXXX
+                  +91 9483127354
                 </a>
               </ContactDetail>
               <ContactDetail label="Email">
@@ -87,9 +88,7 @@ export default function Contact() {
                 </a>
               </ContactDetail>
               <ContactDetail label="Clinic Hours">
-                Mon – Fri: 10:00 AM – 7:00 PM<br />
-                Saturday: 10:00 AM – 5:00 PM<br />
-                Sunday: Closed
+                Mon – Sun: 4:00 PM – 8:00 PM<br />
               </ContactDetail>
             </dl>
 
@@ -173,7 +172,7 @@ export default function Contact() {
                       name="phone"
                       type="tel"
                       autoComplete="tel"
-                      placeholder="+91 XXXX XXXXXX"
+                      placeholder="+91 9483127354"
                       note="Optional"
                     />
                     <div className="flex flex-col gap-1.5">

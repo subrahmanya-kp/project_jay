@@ -70,14 +70,14 @@ const jsonLd = {
       description:
         "Premium dermatology, hair care and aesthetic treatments in Bangalore. Board-certified dermatologist.",
       url: siteUrl,
-      telephone: "+91-XXXXXXXXXX",
+      telephone: "+91-9483127354",
       email: "info@pranavaskin.com",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "[Street Address]",
+        streetAddress: "2172, 13A Main Rd, near Balmuri Ganesha Temple, opposite Vishnuvardhan Park, Kumaraswamy Layout 2nd Stage, Kumaraswamy Layout",
         addressLocality: "Bangalore",
         addressRegion: "Karnataka",
-        postalCode: "5600XX",
+        postalCode: "560078",
         addressCountry: "IN",
       },
       geo: {

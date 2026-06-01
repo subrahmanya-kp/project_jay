@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
             We have received your message and will be in touch within one business day to confirm your consultation.
           </p>
           <p style="font-family: system-ui, sans-serif; color: #6B6B6B; line-height: 1.6; margin-bottom: 24px;">
-            If your concern is urgent, please call us directly at <strong>+91 XXXX XXXXXX</strong>.
+            If your concern is urgent, please call us directly at <strong>+91 9483127354</strong>.
           </p>
           <hr style="border: none; border-top: 1px solid #E2DDD8; margin: 24px 0;" />
           <p style="font-family: system-ui, sans-serif; font-size: 12px; color: #9B9B9B;">
