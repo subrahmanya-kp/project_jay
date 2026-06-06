@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 
 const results = [
   {
@@ -13,21 +13,27 @@ const results = [
   {
     // 16:9 landscape — use object-contain so the full image shows
     src: "/treatments/hair_2.jpeg",
-    label: "Hair Loss",
-    detail: "Hair regrowth treatment",
+    label: "Premature Greying of Hair",
+    detail: "Premature greying reversal treatment",
+    imgClass: "object-contain",
+  },
+  {
+    src: "/treatments/hair_loss_treatment.jpeg",
+    label: "Hair Loss Treatment",
+    detail: "Hair density & scalp restoration",
     imgClass: "object-contain",
   },
   {
     src: "/treatments/arms.jpeg",
-    label: "Skin Infection",
-    detail: "Dermatitis / infection treatment",
+    label: "Hidradenitis Suppurativa",
+    detail: "Axillary lesion & HS treatment",
     imgClass: "object-cover object-center",
   },
   {
     // 2.3:1 wide landscape — use object-contain so the full image shows
     src: "/treatments/legs.jpeg",
-    label: "Psoriasis / Fungal Infection",
-    detail: "Leg skin condition treatment",
+    label: "Eczema",
+    detail: "Chronic eczema management",
     imgClass: "object-contain",
   },
 ];
@@ -35,6 +41,8 @@ const results = [
 export default function Results() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const activeIdxRef = useRef(0);
+  const pausedRef = useRef(false);
 
   // Width of one slide + its trailing gap — the scroll step size.
   const slideStep = () => {
@@ -66,7 +74,19 @@ export default function Results() {
     const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
     const step = first.offsetWidth + gap;
     if (step === 0) return;
-    setActiveIdx(Math.round(track.scrollLeft / step));
+    const idx = Math.round(track.scrollLeft / step);
+    activeIdxRef.current = idx;
+    setActiveIdx(idx);
+  }, []);
+
+  // Auto-advance every 4 s; pauses on hover or touch.
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (pausedRef.current) return;
+      const next = (activeIdxRef.current + 1) % results.length;
+      scrollToIdx(next);
+    }, 4000);
+    return () => clearInterval(id);
   }, []);
 
   return (
@@ -88,7 +108,13 @@ export default function Results() {
         </div>
 
         {/* Carousel — px-10 reserves space so arrows don't overlap the track */}
-        <div className="relative px-10">
+        <div
+          className="relative px-10"
+          onMouseEnter={() => { pausedRef.current = true; }}
+          onMouseLeave={() => { pausedRef.current = false; }}
+          onTouchStart={() => { pausedRef.current = true; }}
+          onTouchEnd={() => { pausedRef.current = false; }}
+        >
           <div
             ref={trackRef}
             onScroll={onScroll}
