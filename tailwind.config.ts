@@ -53,6 +53,15 @@ const config: Config = {
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
       },
+      animation: {
+        marquee: "marquee 28s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
       backgroundImage: {
         "skin-texture": "url('/svg/skin-texture.svg')",
         "hex-pattern": "url('/svg/hex-pattern.svg')",

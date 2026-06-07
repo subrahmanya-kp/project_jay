@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+
 const testimonials = [
   {
     id: 1,
@@ -25,69 +29,93 @@ const testimonials = [
   },
 ];
 
+const len = testimonials.length;
+
 export default function Testimonials() {
+  const [index, setIndex] = useState(0);
+  const pausedRef = useRef(false);
+
+  // Advance one card every 5 s; pause on hover
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (!pausedRef.current) setIndex((i) => (i + 1) % len);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
+
+  const left = testimonials[index];
+  const right = testimonials[(index + 1) % len];
+
   return (
-    <section id="testimonials" className="py-section bg-ivory">
+    <section id="testimonials" className="py-section bg-slate-deep">
       <div className="max-w-content mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
-          <div>
-            <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
-            <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
-              Patient Voices
-            </p>
-            <h2 className="font-serif text-display-md text-ink leading-tight">
-              What Our Patients Say
-            </h2>
-          </div>
-          <div className="flex items-center gap-1.5 flex-shrink-0">
-            {[...Array(5)].map((_, i) => (
-              <StarIcon key={i} />
-            ))}
-            <span className="font-sans text-xs text-muted ml-1">
-              Google Reviews
-            </span>
-          </div>
+        <div className="text-center mb-14">
+          <div className="w-8 h-px bg-gold mx-auto mb-4" aria-hidden="true" />
+          <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-light mb-3">
+            Patient Voices
+          </p>
+          <h2 className="font-serif text-display-lg text-ivory leading-tight">
+            What Our Patients Say
+          </h2>
         </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-5">
-          {testimonials.map((t, i) => (
-            <blockquote
-              key={t.id}
-              className={`relative p-7 lg:p-8 flex flex-col ${
-                i % 2 === 0
-                  ? "bg-warm-white border border-border"
-                  : "bg-champagne"
-              }`}
-            >
-              {/* Decorative quote bar */}
-              <div className="w-8 h-0.5 bg-slate-deep mb-5" aria-hidden="true" />
-
-              <p className="font-sans text-base text-muted leading-[1.8] flex-1">
-                {t.quote}
-              </p>
-
-              <footer className="mt-6 pt-5 border-t border-border">
-                <p className="font-sans text-sm text-muted">{t.detail}</p>
-              </footer>
-            </blockquote>
+        {/* 2 cards stacked — key forces fade-in on every index change */}
+        <div
+          key={index}
+          className="animate-fade-in flex flex-col gap-5"
+          onMouseEnter={() => { pausedRef.current = true; }}
+          onMouseLeave={() => { pausedRef.current = false; }}
+        >
+          {[left, right].map((t, i) => (
+            <article key={i} className="bg-ivory rounded-xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
+              <div className="h-1 bg-gold w-full" aria-hidden="true" />
+              <div className="px-7 pt-6 pb-6">
+                <div className="flex gap-1.5 mb-4">
+                  {[...Array(5)].map((_, j) => <StarIcon key={j} />)}
+                </div>
+                <p className="font-sans text-sm text-muted leading-[1.85] mb-5 line-clamp-4">
+                  {t.quote}
+                </p>
+                <div className="border-t border-border pt-4">
+                  <p className="font-serif text-sm font-semibold text-ink mb-0.5">Verified Patient</p>
+                  <p className="font-sans text-[11px] font-medium tracking-[0.15em] uppercase text-gold">
+                    {t.detail}
+                  </p>
+                </div>
+              </div>
+            </article>
           ))}
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-2 mt-8">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`View review ${i + 1}`}
+              className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                i === index ? "bg-gold" : "bg-slate-mid"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Google Reviews */}
+        <div className="flex items-center justify-center gap-1.5 mt-5">
+          {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+          <span className="font-sans text-xs text-slate-light ml-2">Google Reviews</span>
         </div>
       </div>
     </section>
   );
 }
 
+
 function StarIcon() {
   return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="#B8963E"
-      aria-hidden="true"
-    >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="#B8963E" aria-hidden="true">
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>
   );

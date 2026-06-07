@@ -50,18 +50,18 @@ export default function Hero() {
             </div>
 
             {/* Trust signals */}
-            <div className="mt-10 pt-8 border-t border-border grid grid-cols-3 gap-4">
+            <div className="mt-12 pt-8 border-t border-border flex flex-wrap gap-x-10 gap-y-5">
               {[
                 { label: "Board Certified", sublabel: "MD Dermatology" },
                 { label: "Medical-Grade", sublabel: "Treatments only" },
                 { label: "Personalised", sublabel: "Every consultation" },
               ].map((item) => (
                 <div key={item.label}>
-                  <div className="w-4 h-px bg-gold mb-2.5" aria-hidden="true" />
+                  <div className="w-4 h-px bg-gold mb-2" aria-hidden="true" />
                   <p className="font-serif text-sm font-semibold text-ink leading-tight">
                     {item.label}
                   </p>
-                  <p className="font-sans text-xs text-muted mt-1">
+                  <p className="font-sans text-xs text-muted mt-0.5">
                     {item.sublabel}
                   </p>
                 </div>

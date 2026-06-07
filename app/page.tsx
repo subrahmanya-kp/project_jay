@@ -25,9 +25,12 @@ export default function HomePage() {
         <Hero />
         <About />
         <Services />
-        <Testimonials />
         <Results />
-        <Contact />
+        {/* Testimonials + Contact side by side */}
+        <div className="grid lg:grid-cols-2">
+          <Testimonials />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>
