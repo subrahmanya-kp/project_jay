@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="about" className="py-section bg-champagne">
+    <section id="about" className="py-section bg-blush">
       <div className="max-w-content mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
           {/* Left — philosophy */}
@@ -11,7 +11,7 @@ export default function About() {
             </p>
             <h2 className="font-serif text-display-lg text-ink mb-6 leading-tight">
               Medicine first.{" "}
-              <span className="italic text-slate-deep">Aesthetics always.</span>
+              <span className="italic text-gold">Aesthetics always.</span>
             </h2>
             <div className="space-y-5 font-sans text-base text-muted leading-[1.8]">
               <p>
@@ -57,10 +57,9 @@ export default function About() {
               {/* Decorative frame */}
               <div
                 aria-hidden="true"
-                className="absolute -top-4 -right-4 w-full h-full border border-slate-mist"
+                className="absolute -top-4 -right-4 w-full h-full border border-gold/30"
               />
               <div className="relative bg-ivory p-8 lg:p-10">
-                {/* Caduceus-inspired geometric mark */}
                 <div className="mb-8 flex items-center gap-3">
                   <ClinicMark />
                   <div>
@@ -124,8 +123,7 @@ function ClinicMark() {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {/* Simplified caduceus-inspired botanical mark */}
-      <rect width="40" height="40" fill="#3D4F6B" />
+      <rect width="40" height="40" fill="#B8963E" />
       <line x1="20" y1="6" x2="20" y2="34" stroke="#FAF8F5" strokeWidth="1.5" />
       <path d="M20 10 Q28 14 28 18 Q28 22 20 22 Q12 22 12 18 Q12 14 20 10Z" stroke="#FAF8F5" strokeWidth="1" fill="none" />
       <circle cx="20" cy="8" r="2.5" stroke="#FAF8F5" strokeWidth="1" fill="none" />

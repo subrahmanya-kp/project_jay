@@ -13,19 +13,19 @@ const serviceImages: Record<string, { src: string; focus: string }> = {
 
 export default function Services() {
   return (
-    <section id="services" className="py-section bg-slate-mist">
+    <section id="services" className="py-section bg-mauve">
       <div className="max-w-content mx-auto px-6 lg:px-[15%]">
 
         {/* Section header */}
         <div className="text-center mb-14">
           <div className="w-8 h-px bg-gold mx-auto mb-4" aria-hidden="true" />
-          <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
+          <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-ink/60 mb-3">
             What We Treat
           </p>
           <h2 className="font-serif text-display-lg text-ink mb-4 leading-tight">
             Our Services
           </h2>
-          <p className="font-sans text-lg text-muted leading-relaxed max-w-xl mx-auto">
+          <p className="font-sans text-lg text-ink/65 leading-relaxed max-w-xl mx-auto">
             Every treatment begins with a thorough consultation. We match the
             intervention to the diagnosis — not the other way around.
           </p>
@@ -38,22 +38,23 @@ export default function Services() {
             return (
               <div
                 key={service.slug}
-                className="group bg-white rounded-t-full rounded-b-2xl shadow-card hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col"
+                className="group bg-white rounded-t-full rounded-b-lg overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.15)] hover:-translate-y-2 transition-all duration-300 flex flex-col"
               >
-                {/* Small arch image inset inside the card dome */}
-                <div className="w-1/2 mx-auto mt-5 rounded-t-full overflow-hidden flex-shrink-0 relative aspect-[3/4]">
+                {/* Full-arch image — fills the entire dome */}
+                <div className="relative rounded-t-full overflow-hidden flex-shrink-0 aspect-[3/4]">
                   <Image
                     src={img?.src ?? "/treatments/face.jpeg"}
                     alt={service.title}
                     fill
-                    className={`object-cover ${img?.focus ?? "object-center"}`}
-                    sizes="(max-width: 640px) 35vw, (max-width: 1024px) 22vw, 140px"
+                    className={`object-cover ${img?.focus ?? "object-center"} group-hover:scale-105 transition-transform duration-500`}
+                    sizes="(max-width: 640px) 45vw, (max-width: 1024px) 28vw, 180px"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent" />
                 </div>
 
                 {/* Content */}
                 <div className="px-3 pb-5 pt-4 text-center flex flex-col flex-1">
-                  <h3 className="font-serif text-sm font-bold text-ink uppercase tracking-wide mb-2 leading-snug group-hover:text-slate-deep transition-colors">
+                  <h3 className="font-serif text-sm font-semibold text-ink uppercase tracking-wide mb-2 leading-snug group-hover:text-mauve transition-colors duration-200">
                     {service.title}
                   </h3>
                   <p className="font-sans text-xs text-muted leading-relaxed line-clamp-4 mb-3 flex-1">
@@ -61,7 +62,7 @@ export default function Services() {
                   </p>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="font-sans text-xs font-semibold text-slate-deep underline underline-offset-2 hover:text-slate-mid transition-colors"
+                    className="font-sans text-xs font-semibold text-slate-deep underline-offset-2 hover:text-slate-mid transition-colors"
                   >
                     Read More
                   </Link>
@@ -75,7 +76,7 @@ export default function Services() {
         <div className="text-center mt-12">
           <Link
             href="/#contact"
-            className="inline-flex items-center px-8 py-3.5 bg-slate-deep text-ivory font-sans text-sm font-medium tracking-wide hover:bg-slate-mid transition-colors duration-200"
+            className="inline-flex items-center px-8 py-3.5 bg-ink text-ivory font-sans text-sm font-semibold tracking-wide hover:bg-ink/80 transition-colors duration-200"
           >
             Book a Consultation
           </Link>

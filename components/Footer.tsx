@@ -22,14 +22,14 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-ivory">
+    <footer className="bg-ink text-ivory border-t border-gold/30">
 
       <div className="max-w-content mx-auto px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="inline-flex flex-col leading-none mb-5 group" aria-label="Pranava Skin Clinic">
-              <span className="font-serif text-xl font-semibold text-ivory group-hover:text-champagne transition-colors">
+              <span className="font-serif text-xl font-semibold text-ivory group-hover:text-gold transition-colors">
                 Pranava
               </span>
               <span className="text-[10px] font-sans text-ivory/50 tracking-[0.15em] uppercase mt-0.5">
@@ -58,7 +58,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Pranava Skin on Instagram"
-              className="inline-flex items-center gap-2 mt-6 text-ivory/60 hover:text-ivory transition-colors font-sans text-sm"
+              className="inline-flex items-center gap-2 mt-6 text-ivory/60 hover:text-gold transition-colors font-sans text-sm"
             >
               <InstagramIcon />
               <span>@pranava_skin</span>
@@ -68,7 +68,7 @@ export default function Footer() {
           {/* Link columns — Services & Learn rendered normally, Legal gets map below */}
           {Object.entries(footerLinks).map(([groupName, links]) => (
             <div key={groupName} className="col-span-1">
-              <p className="font-sans text-[10px] font-medium tracking-[0.2em] uppercase text-ivory/40 mb-4">
+              <p className="font-sans text-[10px] font-medium tracking-[0.2em] uppercase text-gold/50 mb-4">
                 {groupName}
               </p>
               <ul className="space-y-2.5" role="list">
@@ -88,7 +88,7 @@ export default function Footer() {
 
           {/* Map — own column next to Legal */}
           <div className="col-span-1 hidden lg:block">
-            <p className="font-sans text-[10px] font-medium tracking-[0.2em] uppercase text-ivory/40 mb-4">
+            <p className="font-sans text-[10px] font-medium tracking-[0.2em] uppercase text-gold/50 mb-4">
               Find Us
             </p>
             <div className="h-[270px] overflow-hidden border border-ivory/10">
@@ -96,7 +96,7 @@ export default function Footer() {
                 src="https://www.google.com/maps/embed?pb=!1m16!1m11!1m3!1d3!2d77.56187349999999!3d12.9007238!2m2!1f0!2f90!3m2!1i1024!2i768!4f75!3m3!1m2!1s0x3bae3f3e13dc0157%3A0x4c2bf9eb505a7fbc!2sPranava%20skin%2C%20hair%20and%20aesthetics%20clinic!4v1780241453692"
                 width="600"
                 height="450"
-                className="w-full h-full border-0 grayscale opacity-70"
+                className="w-full h-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Pranava Skin, Hair and Aesthetics Clinic on Google Maps"

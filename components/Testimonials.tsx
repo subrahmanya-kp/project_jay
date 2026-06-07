@@ -35,7 +35,6 @@ export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const pausedRef = useRef(false);
 
-  // Advance one card every 5 s; pause on hover
   useEffect(() => {
     const id = setInterval(() => {
       if (!pausedRef.current) setIndex((i) => (i + 1) % len);
@@ -47,12 +46,12 @@ export default function Testimonials() {
   const right = testimonials[(index + 1) % len];
 
   return (
-    <section id="testimonials" className="py-section bg-slate-deep">
+    <section id="testimonials" className="py-section bg-ink">
       <div className="max-w-content mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
           <div className="w-8 h-px bg-gold mx-auto mb-4" aria-hidden="true" />
-          <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-light mb-3">
+          <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-ivory/40 mb-3">
             Patient Voices
           </p>
           <h2 className="font-serif text-display-lg text-ivory leading-tight">
@@ -68,7 +67,7 @@ export default function Testimonials() {
           onMouseLeave={() => { pausedRef.current = false; }}
         >
           {[left, right].map((t, i) => (
-            <article key={i} className="bg-ivory rounded-xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
+            <article key={i} className="bg-ivory overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
               <div className="h-1 bg-gold w-full" aria-hidden="true" />
               <div className="px-7 pt-6 pb-6">
                 <div className="flex gap-1.5 mb-4">
@@ -96,7 +95,7 @@ export default function Testimonials() {
               onClick={() => setIndex(i)}
               aria-label={`View review ${i + 1}`}
               className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                i === index ? "bg-gold" : "bg-slate-mid"
+                i === index ? "bg-gold" : "bg-ivory/25"
               }`}
             />
           ))}
@@ -105,7 +104,7 @@ export default function Testimonials() {
         {/* Google Reviews */}
         <div className="flex items-center justify-center gap-1.5 mt-5">
           {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
-          <span className="font-sans text-xs text-slate-light ml-2">Google Reviews</span>
+          <span className="font-sans text-xs text-ivory/40 ml-2">Google Reviews</span>
         </div>
       </div>
     </section>
