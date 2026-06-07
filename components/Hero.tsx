@@ -4,8 +4,7 @@ import Image from "next/image";
 const stats = [
   { number: "500+", label: "Patients Treated" },
   { number: "7+",   label: "Years Experience" },
-  { number: "6",    label: "Treatments" },
-  { number: "IADVL", label: "Certified" },
+  { number: "10+",    label: "Treatments" },
 ];
 
 export default function Hero() {
