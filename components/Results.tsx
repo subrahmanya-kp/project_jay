@@ -37,18 +37,16 @@ const results = [
 ];
 
 const GAP = 20;
-// Clone first 3 so the loop looks seamless
 const extended = [...results, ...results.slice(0, 3)];
 
 export default function Results() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [step, setStep] = useState(0);        // pixels: itemWidth + gap
+  const [step, setStep] = useState(0);
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState(true);
   const indexRef = useRef(0);
   const pausedRef = useRef(false);
 
-  // Measure container → compute step
   useEffect(() => {
     const measure = () => {
       if (!containerRef.current) return;
@@ -61,7 +59,6 @@ export default function Results() {
     return () => ro.disconnect();
   }, []);
 
-  // When index hits results.length (pointing at a clone), snap back to 0
   useEffect(() => {
     if (index === results.length) {
       const t = setTimeout(() => {
@@ -77,7 +74,6 @@ export default function Results() {
     }
   }, [index, animate]);
 
-  // Auto-advance
   useEffect(() => {
     const id = setInterval(() => {
       if (pausedRef.current || step === 0) return;
@@ -91,7 +87,7 @@ export default function Results() {
   const itemWidth = step > 0 ? step - GAP : 0;
 
   return (
-    <section id="results" className="py-section bg-ivory">
+    <section id="results" className="py-section bg-white">
       <div className="max-w-content mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-xl mb-10">
@@ -117,7 +113,6 @@ export default function Results() {
         onTouchStart={() => { pausedRef.current = true; }}
         onTouchEnd={() => { pausedRef.current = false; }}
       >
-        {/* overflow-hidden clips; transform slides the inner track */}
         <div ref={containerRef} className="overflow-hidden">
           <div
             className="flex"

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import MarqueeTicker from "@/components/MarqueeTicker";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import Results from "@/components/Results";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "Dermatologist in Bangalore | Pranava Skin, Hair & Aesthetics Clinic",
@@ -23,6 +25,7 @@ export default function HomePage() {
       <Nav />
       <main>
         <Hero />
+        <MarqueeTicker />
         <About />
         <Services />
         <Results />
@@ -33,6 +36,7 @@ export default function HomePage() {
         </div>
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

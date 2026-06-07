@@ -36,8 +36,8 @@ export default function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled || !isHome
-          ? "bg-ivory/97 backdrop-blur-md border-b border-border"
-          : "bg-ivory/70 backdrop-blur-sm"
+          ? "bg-ink/98 backdrop-blur-md shadow-nav-dark"
+          : "bg-ink/60 backdrop-blur-sm"
       }`}
     >
       <nav className="max-w-content mx-auto px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between">
@@ -52,10 +52,10 @@ export default function Nav() {
             priority
           />
           <div className="ml-2.5 flex flex-col leading-none">
-            <span className="font-serif text-base lg:text-lg font-semibold text-slate-deep tracking-tight group-hover:text-slate-mid transition-colors">
+            <span className="font-serif text-base lg:text-lg font-semibold text-ivory tracking-tight group-hover:text-gold transition-colors">
               Pranava
             </span>
-            <span className="text-[9px] font-sans text-muted tracking-[0.15em] uppercase">
+            <span className="text-[9px] font-sans text-ivory/40 tracking-[0.15em] uppercase">
               Skin · Hair · Aesthetics
             </span>
           </div>
@@ -67,7 +67,7 @@ export default function Nav() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="font-sans text-sm font-medium text-muted hover:text-ink transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-slate-deep after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
+                className="font-sans text-sm font-medium text-ivory/60 hover:text-ivory transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gold after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
               >
                 {link.label}
               </Link>
@@ -76,27 +76,34 @@ export default function Nav() {
         </ul>
 
         {/* Desktop CTA + Instagram */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
           <a
             href="https://www.instagram.com/pranava_skin/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Pranava Skin on Instagram"
-            className="text-muted hover:text-slate-deep transition-colors"
+            className="text-ivory/50 hover:text-gold transition-colors mr-1"
           >
             <InstagramIcon />
           </a>
+          <a
+            href="tel:+919483127354"
+            className="inline-flex items-center gap-2 px-4 py-2 border border-ivory/25 text-ivory text-sm font-medium hover:border-gold hover:text-gold transition-colors duration-200"
+          >
+            <PhoneIcon />
+            +91 94831 27354
+          </a>
           <Link
             href="/#contact"
-            className="inline-flex items-center px-5 py-2 bg-slate-deep text-ivory text-sm font-medium tracking-wide hover:bg-slate-mid transition-colors duration-200"
+            className="inline-flex items-center px-5 py-2 bg-gold text-obsidian text-sm font-semibold tracking-wide hover:bg-gold/90 transition-colors duration-200"
           >
-            Book Consultation
+            Book
           </Link>
         </div>
 
         {/* Mobile hamburger */}
         <button
-          className="lg:hidden p-2 -mr-2 text-ink"
+          className="lg:hidden p-2 -mr-2 text-ivory"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
@@ -107,33 +114,39 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden fixed inset-0 top-16 bg-ivory z-40 flex flex-col p-6">
+        <div className="lg:hidden fixed inset-0 top-16 bg-ink z-40 flex flex-col p-6">
           <ul className="flex flex-col gap-6 mt-4" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-serif text-2xl text-ink hover:text-slate-deep transition-colors"
+                  className="font-serif text-2xl text-ivory/80 hover:text-gold transition-colors"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="mt-auto flex flex-col gap-4">
+          <div className="mt-auto flex flex-col gap-3">
             <Link
               href="/#contact"
               onClick={() => setMenuOpen(false)}
-              className="w-full text-center py-3 bg-slate-deep text-ivory text-sm font-medium tracking-wide"
+              className="w-full text-center py-3 bg-gold text-obsidian text-sm font-semibold tracking-wide"
             >
               Book a Consultation
             </Link>
             <a
+              href="tel:+919483127354"
+              className="w-full text-center py-3 border border-ivory/25 text-ivory text-sm font-medium tracking-wide"
+            >
+              Call +91 94831 27354
+            </a>
+            <a
               href="https://www.instagram.com/pranava_skin/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 text-sm text-muted"
+              className="flex items-center justify-center gap-2 text-sm text-ivory/50"
             >
               <InstagramIcon />
               <span>@pranava_skin</span>
@@ -142,6 +155,14 @@ export default function Nav() {
         </div>
       )}
     </header>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
   );
 }
 

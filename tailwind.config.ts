@@ -22,6 +22,11 @@ const config: Config = {
         ink: "#1C1C1E",
         muted: "#6B6B6B",
         border: "#E2DDD8",
+        obsidian: "#0E0E0F",
+        "surface-dark": "#161618",
+        "surface-raised": "#1E1E21",
+        mauve: "#b8a0c5",
+        blush: "#e8dfe8",
       },
       fontFamily: {
         serif: ["var(--font-playfair)", "Georgia", "serif"],
@@ -49,6 +54,8 @@ const config: Config = {
         card: "0 1px 3px rgba(28,28,30,0.08), 0 4px 16px rgba(61,79,107,0.06)",
         "card-hover": "0 4px 12px rgba(28,28,30,0.1), 0 12px 32px rgba(61,79,107,0.1)",
         nav: "0 1px 0 rgba(28,28,30,0.08)",
+        "card-dark": "0 1px 3px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35)",
+        "nav-dark": "0 1px 0 rgba(255,255,255,0.06)",
       },
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.4, 0, 0.2, 1)",

@@ -45,7 +45,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-section bg-champagne">
+    <section id="contact" className="py-section bg-blush">
       <div className="max-w-content mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -133,7 +133,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={formState === "submitting"}
-                  className="mt-6 w-full py-3.5 bg-slate-deep text-ivory font-sans text-sm font-medium tracking-wide hover:bg-slate-mid disabled:opacity-60 transition-colors duration-200"
+                  className="mt-6 w-full py-3.5 bg-gold text-ink font-sans text-sm font-semibold tracking-wide hover:bg-gold/90 disabled:opacity-50 transition-colors duration-200"
                 >
                   {formState === "submitting" ? "Sending…" : "Send Message"}
                 </button>
@@ -185,7 +185,7 @@ function FormField({
 
 function CheckIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D4F6B" strokeWidth="2" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8963E" strokeWidth="2" aria-hidden="true">
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
