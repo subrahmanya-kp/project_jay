@@ -1,17 +1,15 @@
 export default function About() {
   return (
-    <section id="about" className="py-section bg-ivory">
+    <section id="about" className="py-section bg-champagne">
       <div className="max-w-content mx-auto px-6 lg:px-8">
-        {/* Section label */}
-        <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
-        <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-10">
-          About the Clinic
-        </p>
-
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
           {/* Left — philosophy */}
           <div>
-            <h2 className="font-serif text-display-md text-ink mb-6 leading-tight">
+            <div className="w-8 h-px bg-gold mb-4" aria-hidden="true" />
+            <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
+              About the Clinic
+            </p>
+            <h2 className="font-serif text-display-lg text-ink mb-6 leading-tight">
               Medicine first.{" "}
               <span className="italic text-slate-deep">Aesthetics always.</span>
             </h2>
@@ -61,12 +59,12 @@ export default function About() {
                 aria-hidden="true"
                 className="absolute -top-4 -right-4 w-full h-full border border-slate-mist"
               />
-              <div className="relative bg-champagne p-8 lg:p-10">
+              <div className="relative bg-ivory p-8 lg:p-10">
                 {/* Caduceus-inspired geometric mark */}
                 <div className="mb-8 flex items-center gap-3">
                   <ClinicMark />
                   <div>
-                    <p className="font-serif text-xl font-semibold text-ink">
+                    <p className="font-serif text-2xl font-semibold text-ink">
                       Dr. Nagalakshmi K P
                     </p>
                     <p className="font-sans text-xs text-muted mt-0.5">
