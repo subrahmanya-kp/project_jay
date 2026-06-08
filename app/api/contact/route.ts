@@ -40,10 +40,36 @@ function patientHtml(name: string) {
       <hr style="border: none; border-top: 1px solid #E2DDD8; margin: 24px 0;" />
       <p style="font-family: system-ui, sans-serif; font-size: 12px; color: #9B9B9B;">
         Pranava Skin, Hair and Aesthetics Clinic · Bangalore, Karnataka<br>
-        This is a confirmation email. Please do not reply — instead call or use the contact form on our website.
+        To ensure you receive our reply, please add ${process.env.GMAIL_USER ?? "our email"} to your contacts.
       </p>
     </div>
   `;
+}
+
+function patientText(name: string) {
+  return `Hi ${name},
+
+Thank you for reaching out to Pranava Skin, Hair and Aesthetics Clinic.
+
+We have received your message and will be in touch within one business day to confirm your consultation.
+
+If your concern is urgent, please call us directly at +91 9483127354.
+
+To make sure our reply reaches your inbox, please add ${process.env.GMAIL_USER ?? "our email"} to your contacts.
+
+--
+Pranava Skin, Hair and Aesthetics Clinic
+Bangalore, Karnataka`;
+}
+
+function clinicText(name: string, email: string, phone: string | undefined, message: string) {
+  return `New Consultation Request
+
+Name: ${name}
+Email: ${email}${phone ? `\nPhone: ${phone}` : ""}
+
+Message:
+${message}`;
 }
 
 async function sendViaGmail(
@@ -62,6 +88,7 @@ async function sendViaGmail(
     to: clinicEmail,
     replyTo: email,
     subject: `New consultation request — ${name}`,
+    text: clinicText(name, email, phone, message),
     html: clinicHtml(name, email, phone, message),
   });
 
@@ -69,6 +96,7 @@ async function sendViaGmail(
     from: `Pranava Skin Clinic <${process.env.GMAIL_USER}>`,
     to: email,
     subject: "We've received your message — Pranava Skin Clinic",
+    text: patientText(name),
     html: patientHtml(name),
   });
 }
@@ -83,6 +111,7 @@ async function sendViaResend(
     to: [clinicEmail],
     replyTo: email,
     subject: `New consultation request — ${name}`,
+    text: clinicText(name, email, phone, message),
     html: clinicHtml(name, email, phone, message),
   });
 
@@ -90,6 +119,7 @@ async function sendViaResend(
     from: "Pranava Skin Clinic <onboarding@resend.dev>",
     to: [email],
     subject: "We've received your message — Pranava Skin Clinic",
+    text: patientText(name),
     html: patientHtml(name),
   });
 }

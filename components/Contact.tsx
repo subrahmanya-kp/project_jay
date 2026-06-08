@@ -78,6 +78,9 @@ export default function Contact() {
                   Thank you. We will be in touch within one business day to
                   confirm your consultation.
                 </p>
+                <p className="font-sans text-xs text-muted/70 mt-2">
+                  A confirmation email is on its way — if you don't see it, please check your spam or promotions folder.
+                </p>
                 <button
                   onClick={() => setFormState("idle")}
                   className="mt-8 font-sans text-sm text-slate-deep underline underline-offset-4"
