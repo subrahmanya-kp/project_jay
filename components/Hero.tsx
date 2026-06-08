@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const stats = [
-  { number: "500+", label: "Patients Treated" },
+  { number: "5000+", label: "Patients Treated" },
   { number: "7+",   label: "Years Experience" },
   { number: "10+",    label: "Treatments" },
 ];
