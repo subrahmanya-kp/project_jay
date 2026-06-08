@@ -133,7 +133,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={formState === "submitting"}
-                  className="mt-6 w-full py-3.5 bg-gold text-ink font-sans text-sm font-semibold tracking-wide hover:bg-gold/90 disabled:opacity-50 transition-colors duration-200"
+                  className="mt-6 w-full py-3.5 bg-gold border border-gold text-ink font-sans text-sm font-semibold tracking-wide hover:bg-gold/90 hover:border-gold/90 disabled:opacity-50 transition-colors duration-200"
                 >
                   {formState === "submitting" ? "Sending…" : "Send Message"}
                 </button>
