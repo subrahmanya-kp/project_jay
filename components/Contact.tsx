@@ -13,7 +13,6 @@ export default function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-
     if (data.get("website")) return;
 
     setFormState("submitting");
@@ -30,12 +29,10 @@ export default function Contact() {
           message: data.get("message"),
         }),
       });
-
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
         throw new Error(json.error ?? "Something went wrong");
       }
-
       setFormState("success");
       formRef.current?.reset();
     } catch (err) {
@@ -45,90 +42,115 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-section bg-blush">
-      <div className="max-w-content mx-auto px-6 lg:px-8">
-
-        {/* Header */}
-        <div className="text-center mb-10">
-          <div className="w-8 h-px bg-gold mx-auto mb-4" aria-hidden="true" />
-          <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-slate-mid mb-3">
-            Get in Touch
-          </p>
-          <h2 className="font-serif text-display-lg text-ink mb-4 leading-tight">
-            Book a Consultation
-          </h2>
-          <p className="font-sans text-lg text-muted leading-relaxed max-w-md mx-auto">
-            Begin with a thorough skin consultation. Bring any prior
-            prescriptions or treatment history.
+    <section id="contact" className="band">
+      <div className="wrap">
+        <div className="sec-head center">
+          <span className="eyebrow">Get in Touch</span>
+          <h2 className="h-section">Book a Consultation</h2>
+          <p className="lead">
+            Begin with a thorough skin consultation. Bring any prior prescriptions or treatment history.
           </p>
         </div>
 
-        {/* Centered form card */}
-        <div className="max-w-lg mx-auto">
-          <div className="bg-ivory border border-border shadow-card p-8 lg:p-10">
+        <div className="contact-grid">
+          {/* Info column */}
+          <div className="contact-info">
+            {[
+              {
+                icon: <PhoneIcon />,
+                label: "Phone",
+                content: <a href="tel:+919483127354">+91 94831 27354</a>,
+              },
+              {
+                icon: <MailIcon />,
+                label: "Email",
+                content: <a href="mailto:pranavaskin@gmail.com">pranavaskin@gmail.com</a>,
+              },
+              {
+                icon: <MapIcon />,
+                label: "Address",
+                content: <span>2172, 13A Main Rd, Kumaraswamy Layout, Bangalore — 560078</span>,
+              },
+              {
+                icon: <ClockIcon />,
+                label: "Hours",
+                content: (
+                  <span>
+                    Mon–Fri: 10:00 AM – 7:00 PM<br />
+                    Saturday: 10:00 AM – 5:00 PM
+                  </span>
+                ),
+              },
+            ].map((item) => (
+              <div className="contact-info-item" key={item.label}>
+                <div className="ico-wrap">{item.icon}</div>
+                <div>
+                  <div className="label">{item.label}</div>
+                  <div className="value">{item.content}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Form */}
+          <div className="form-card">
             {formState === "success" ? (
-              <div className="flex flex-col items-center text-center py-8">
-                <div className="w-12 h-12 rounded-full bg-slate-mist flex items-center justify-center mb-4">
+              <div style={{ textAlign: "center", padding: "32px 0" }}>
+                <div style={{
+                  width: "56px", height: "56px", borderRadius: "50%",
+                  background: "var(--primary-tint)", color: "var(--primary)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  margin: "0 auto 16px",
+                }}>
                   <CheckIcon />
                 </div>
-                <h3 className="font-serif text-xl text-ink mb-2">
-                  Message Received
-                </h3>
-                <p className="font-sans text-sm text-muted">
-                  Thank you. We will be in touch within one business day to
-                  confirm your consultation.
+                <h3 style={{ fontSize: "22px", color: "var(--ink)", marginBottom: "8px" }}>Message Received</h3>
+                <p style={{ color: "var(--muted)", fontSize: "15px" }}>
+                  Thank you. We will be in touch within one business day to confirm your consultation.
                 </p>
-                <p className="font-sans text-xs text-muted/70 mt-2">
-                  A confirmation email is on its way — if you don't see it, please check your spam or promotions folder.
+                <p style={{ color: "var(--muted)", fontSize: "13px", marginTop: "8px" }}>
+                  A confirmation email is on its way — if you don&apos;t see it, please check your spam or promotions folder.
                 </p>
                 <button
                   onClick={() => setFormState("idle")}
-                  className="mt-8 font-sans text-sm text-slate-deep underline underline-offset-4"
+                  style={{
+                    marginTop: "24px", background: "none", border: "none", cursor: "pointer",
+                    color: "var(--primary)", fontSize: "14px", fontWeight: 600, textDecoration: "underline",
+                    fontFamily: "var(--font-body)",
+                  }}
                 >
                   Send another message
                 </button>
               </div>
             ) : (
-              <form
-                ref={formRef}
-                onSubmit={handleSubmit}
-                noValidate
-                aria-label="Book a consultation"
-              >
-                <h3 className="font-serif text-xl text-ink mb-6 text-center">
-                  Request an Appointment
-                </h3>
+              <form ref={formRef} onSubmit={handleSubmit} noValidate aria-label="Book a consultation">
+                <h3>Request an Appointment</h3>
+                <p className="sub">Fill in the form and we&apos;ll be in touch within one business day.</p>
 
                 {/* Honeypot */}
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  className="absolute opacity-0 pointer-events-none w-0 h-0"
-                />
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                  style={{ position: "absolute", opacity: 0, pointerEvents: "none", width: 0, height: 0 }} />
 
-                <div className="space-y-4">
-                  <FormField label="Full Name" name="name" type="text" required autoComplete="name" placeholder="Your name" />
-                  <FormField label="Email Address" name="email" type="email" required autoComplete="email" placeholder="you@example.com" />
-                  <FormField label="Phone Number" name="phone" type="tel" autoComplete="tel" placeholder="+91 9483127354" note="Optional" />
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-sans text-xs font-medium text-ink tracking-wide">
-                      Message <span className="text-slate-mid">*</span>
-                    </label>
-                    <textarea
-                      name="message"
-                      required
-                      rows={4}
-                      placeholder="Briefly describe your concern or the treatment you're interested in"
-                      className="w-full px-4 py-3 bg-ivory border border-border font-sans text-sm text-ink placeholder:text-muted focus:border-slate-deep focus:outline-none resize-none transition-colors"
-                    />
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="name">Full Name <span style={{ color: "var(--primary)" }}>*</span></label>
+                  <input id="name" type="text" name="name" required autoComplete="name" placeholder="Your name" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email Address <span style={{ color: "var(--primary)" }}>*</span></label>
+                  <input id="email" type="email" name="email" required autoComplete="email" placeholder="you@example.com" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Phone Number <span style={{ color: "var(--muted)", fontWeight: 400 }}>(optional)</span></label>
+                  <input id="phone" type="tel" name="phone" autoComplete="tel" placeholder="+91 9483127354" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message">Message <span style={{ color: "var(--primary)" }}>*</span></label>
+                  <textarea id="message" name="message" required rows={4}
+                    placeholder="Briefly describe your concern or the treatment you're interested in" />
                 </div>
 
                 {formState === "error" && (
-                  <p role="alert" className="mt-4 font-sans text-xs text-red-600">
+                  <p role="alert" style={{ color: "#dc2626", fontSize: "13px", margin: "0 0 16px" }}>
                     {errorMessage}
                   </p>
                 )}
@@ -136,59 +158,63 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={formState === "submitting"}
-                  className="mt-6 w-full py-3.5 bg-gold border border-gold text-ink font-sans text-sm font-semibold tracking-wide hover:bg-gold/90 hover:border-gold/90 disabled:opacity-50 transition-colors duration-200"
+                  className="btn btn-primary form-submit"
+                  style={{ opacity: formState === "submitting" ? 0.6 : 1 }}
                 >
                   {formState === "submitting" ? "Sending…" : "Send Message"}
                 </button>
 
-                <p className="mt-4 font-sans text-xs text-muted text-center leading-relaxed">
-                  Your details are kept private. See our{" "}
-                  <a href="/privacy-policy" className="underline underline-offset-2 hover:text-ink">
-                    Privacy Policy
-                  </a>
-                  .
+                <p style={{ marginTop: "16px", fontSize: "12px", color: "var(--muted)", textAlign: "center" }}>
+                  Your details are kept private.{" "}
+                  <a href="/privacy-policy" style={{ color: "var(--muted)", textDecoration: "underline" }}>Privacy Policy</a>
                 </p>
               </form>
             )}
           </div>
         </div>
-
       </div>
     </section>
   );
 }
 
-function FormField({
-  label, name, type, required, autoComplete, placeholder, note,
-}: {
-  label: string; name: string; type: string;
-  required?: boolean; autoComplete?: string; placeholder?: string; note?: string;
-}) {
+function PhoneIcon() {
   return (
-    <div className="flex flex-col gap-1.5">
-      <label className="font-sans text-xs font-medium text-ink tracking-wide flex items-center gap-2">
-        {label}
-        {required ? (
-          <span className="text-slate-mid">*</span>
-        ) : note ? (
-          <span className="text-muted font-normal">({note})</span>
-        ) : null}
-      </label>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        autoComplete={autoComplete}
-        placeholder={placeholder}
-        className="w-full px-4 py-3 bg-ivory border border-border font-sans text-sm text-ink placeholder:text-muted focus:border-slate-deep focus:outline-none transition-colors"
-      />
-    </div>
+    <svg className="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg className="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <polyline points="22,6 12,13 2,6" />
+    </svg>
+  );
+}
+
+function MapIcon() {
+  return (
+    <svg className="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function ClockIcon() {
+  return (
+    <svg className="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
   );
 }
 
 function CheckIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8963E" strokeWidth="2" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );

@@ -3,67 +3,71 @@ import Image from "next/image";
 import { services } from "@/content/services";
 
 const serviceImages: Record<string, { src: string; focus: string }> = {
-  "chemical-peels":       { src: "/services/chemical_peel.jpg",  focus: "object-top" },
-  "freckle-removal":      { src: "/services/frekel.jpg",         focus: "object-top" },
-  "wart-treatment":       { src: "/services/wart.jpg",           focus: "object-top" },
-  "hair-loss-treatment":  { src: "/services/hair_loss.avif",     focus: "object-top" },
-  "prp-gfc":              { src: "/services/prp.jpg",            focus: "object-top" },
-  "microneedling":        { src: "/services/Microneedling.webp", focus: "object-center" },
+  "chemical-peels":      { src: "/services/chemical_peel.jpg",  focus: "object-top" },
+  "freckle-removal":     { src: "/services/frekel.jpg",         focus: "object-top" },
+  "wart-treatment":      { src: "/services/wart.jpg",           focus: "object-top" },
+  "hair-loss-treatment": { src: "/services/hair_loss.avif",     focus: "object-top" },
+  "prp-gfc":             { src: "/services/prp.jpg",            focus: "object-top" },
+  "microneedling":       { src: "/services/Microneedling.webp", focus: "object-center" },
 };
 
 export default function Services() {
   return (
-    <section id="services" className="py-section bg-mauve">
-      <div className="max-w-content mx-auto px-6 lg:px-[15%]">
-
-        {/* Section header */}
-        <div className="text-center mb-14">
-          <div className="w-8 h-px bg-gold mx-auto mb-4" aria-hidden="true" />
-          <p className="font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-ink/60 mb-3">
-            What We Treat
-          </p>
-          <h2 className="font-serif text-display-lg text-ink mb-4 leading-tight">
-            Our Services
-          </h2>
-          <p className="font-sans text-lg text-ink/65 leading-relaxed max-w-xl mx-auto">
+    <section id="services" className="band alt">
+      <div className="wrap">
+        <div className="sec-head center">
+          <span className="eyebrow">What We Treat</span>
+          <h2 className="h-section">Our Services</h2>
+          <p className="lead">
             Every treatment begins with a thorough consultation. We match the
             intervention to the diagnosis — not the other way around.
           </p>
         </div>
 
-        {/* Cards — 2 col → 3 col → 6 col (single row on desktop) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "16px",
+          marginTop: "48px",
+        }}
+          className="svc-arch-grid"
+        >
           {services.map((service) => {
             const img = serviceImages[service.slug];
             return (
               <div
                 key={service.slug}
-                className="group bg-white rounded-t-full rounded-b-lg overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.15)] hover:-translate-y-2 transition-all duration-300 flex flex-col"
+                style={{
+                  background: "#fff",
+                  borderRadius: "999px 999px 16px 16px",
+                  overflow: "hidden",
+                  boxShadow: "var(--shadow-sm)",
+                  transition: "transform 0.25s ease, box-shadow 0.25s ease",
+                  display: "flex",
+                  flexDirection: "column",
+                  cursor: "pointer",
+                }}
+                className="svc-arch-card"
               >
-                {/* Full-arch image — fills the entire dome */}
-                <div className="relative rounded-t-full overflow-hidden flex-shrink-0 aspect-[3/4]">
+                <div style={{ position: "relative", borderRadius: "999px 999px 0 0", overflow: "hidden", flexShrink: 0, aspectRatio: "3/4" }}>
                   <Image
                     src={img?.src ?? "/treatments/face.jpeg"}
                     alt={service.title}
                     fill
-                    className={`object-cover ${img?.focus ?? "object-center"} group-hover:scale-105 transition-transform duration-500`}
+                    className={`object-cover ${img?.focus ?? "object-center"}`}
                     sizes="(max-width: 640px) 45vw, (max-width: 1024px) 28vw, 180px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent" />
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(44,132,230,0.18), transparent)" }} />
                 </div>
 
-                {/* Content */}
-                <div className="px-3 pb-5 pt-4 text-center flex flex-col flex-1">
-                  <h3 className="font-serif text-sm font-semibold text-ink uppercase tracking-wide mb-2 leading-snug group-hover:text-mauve transition-colors duration-200">
+                <div style={{ padding: "12px 12px 20px", textAlign: "center", display: "flex", flexDirection: "column", flex: 1 }}>
+                  <h3 style={{ fontFamily: "var(--font-display)", fontSize: "13px", fontWeight: 700, color: "var(--ink)", letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "6px", lineHeight: 1.3 }}>
                     {service.title}
                   </h3>
-                  <p className="font-sans text-xs text-muted leading-relaxed line-clamp-4 mb-3 flex-1">
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", lineHeight: 1.6, marginBottom: "10px", flex: 1, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                     {service.shortDescription}
                   </p>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="font-sans text-xs font-semibold text-slate-deep underline-offset-2 hover:text-slate-mid transition-colors"
-                  >
+                  <Link href={`/services/${service.slug}`} style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 600, color: "var(--primary)", textDecoration: "none" }}>
                     Read More
                   </Link>
                 </div>
@@ -72,17 +76,23 @@ export default function Services() {
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <Link
-            href="/#contact"
-            className="inline-flex items-center px-8 py-3.5 bg-ink text-ivory font-sans text-sm font-semibold tracking-wide hover:bg-ink/80 transition-colors duration-200"
-          >
+        <div style={{ textAlign: "center", marginTop: "48px" }}>
+          <Link href="/#contact" className="btn btn-primary">
+            <CalendarIcon />
             Book a Consultation
           </Link>
         </div>
-
       </div>
     </section>
+  );
+}
+
+function CalendarIcon() {
+  return (
+    <svg className="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
   );
 }

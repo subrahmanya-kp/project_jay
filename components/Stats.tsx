@@ -1,5 +1,5 @@
 const stats = [
-  { number: "500+", label: "Patients Treated" },
+  { number: "5000+", label: "Patients Treated" },
   { number: "7+",   label: "Years Experience" },
   { number: "6",    label: "Specialist Treatments" },
   { number: "IADVL", label: "Certified Member" },
