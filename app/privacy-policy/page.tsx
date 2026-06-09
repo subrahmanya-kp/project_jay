@@ -35,8 +35,8 @@ export default function PrivacyPolicyPage() {
                   Pranava Skin, Hair and Aesthetics Clinic (&ldquo;we&rdquo;, &ldquo;us&rdquo;,
                   &ldquo;our&rdquo;) is the data controller for personal information collected
                   through this website. Contact:{" "}
-                  <a href="mailto:info@pranavaskin.com" className="text-slate-deep underline">
-                    info@pranavaskin.com
+                  <a href="mailto:pranavaskin@gmail.com" className="text-slate-deep underline">
+                    pranavaskin@gmail.com
                   </a>
                   .
                 </p>
@@ -122,8 +122,8 @@ export default function PrivacyPolicyPage() {
                 </ul>
                 <p>
                   To exercise any right, email us at{" "}
-                  <a href="mailto:info@pranavaskin.com" className="text-slate-deep underline">
-                    info@pranavaskin.com
+                  <a href="mailto:pranavaskin@gmail.com" className="text-slate-deep underline">
+                    pranavaskin@gmail.com
                   </a>
                   .
                 </p>

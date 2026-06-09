@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -71,7 +64,7 @@ const jsonLd = {
         "Premium dermatology, hair care and aesthetic treatments in Bangalore. Board-certified dermatologist.",
       url: siteUrl,
       telephone: "+91-9483127354",
-      email: "info@pranavaskin.com",
+      email: "pranavaskin@gmail.com",
       address: {
         "@type": "PostalAddress",
         streetAddress: "2172, 13A Main Rd, near Balmuri Ganesha Temple, opposite Vishnuvardhan Park, Kumaraswamy Layout 2nd Stage, Kumaraswamy Layout",
@@ -125,7 +118,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} h-full`}
+      data-dir="c"
+      className={`${manrope.variable} h-full`}
     >
       <head>
         <script
@@ -133,7 +127,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-ivory text-ink font-sans">
+      <body>
         {children}
         <Analytics />
       </body>
